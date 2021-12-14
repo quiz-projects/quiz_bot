@@ -31,6 +31,5 @@ def read_quiz_data():
     return db.tables()
 
 def get_quiz(query):
-    print(query)
     d_table = db.table(query)
     return d_table.all()

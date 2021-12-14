@@ -23,8 +23,14 @@ def add_quiz(data_quiz:str,quiz_name)-> None:
         correct = quiz['correct']
         options = [quiz.get('option01'),quiz.get('option02'),quiz.get('option03'),quiz.get('option04')]
     
-    quiz_table = db.table(quiz_name)
-    quiz_table.insert({'question':question,'correct':correct,'options':options,'image_link':image_link})
+        quiz_table = db.table(quiz_name)
+        quiz_table.insert({'question':question,'correct':correct,'options':options,'image_link':image_link})
 
 def read_quiz_data():
+    """Read all table QUIZ"""
     return db.tables()
+
+def get_quiz(query):
+    print(query)
+    d_table = db.table(query)
+    return d_table.all()

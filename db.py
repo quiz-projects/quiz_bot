@@ -27,4 +27,4 @@ def add_quiz(data_quiz:str,quiz_name)-> None:
     quiz_table.insert({'question':question,'correct':correct,'options':options,'image_link':image_link})
 
 def read_quiz_data():
-    return db.all()
+    return db.tables()

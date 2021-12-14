@@ -1,4 +1,4 @@
-from telegram import Update
+from telegram import Update, ReplyKeyboardMarkup, ReplyMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, Document, PhotoSize
 from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters, PollAnswerHandler, PollHandler
 import db
 import os
@@ -15,7 +15,10 @@ def document(update,context):
 
 def quiz(update,context):
     all_quiz = db.read_quiz_data()
-    print(all_quiz)
+    buttons = [[InlineKeyboardButton(button,callback_data=button)] for button in all_quiz]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    update.message.reply_text(text='Choose the one you need from the Quiz below',reply_markup=reply_markup)
+
 
 
 updater = Updater('1514048549:AAEKmDPsPzDIw3K4CBIPxUqko2AzQ7gCyQA')
